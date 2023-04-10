@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { CustomMenuComponent } from './components/custom-menu/custom-menu.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CustomMenuComponent
   ],
   imports: [
     BrowserModule
