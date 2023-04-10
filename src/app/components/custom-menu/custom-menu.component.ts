@@ -56,8 +56,16 @@ export class CustomMenuComponent {
     }
   }
 
-  onDoubleClick() {
-    this.ipc?.send('toggle-window-maximize')
+  CloseApp() {
+    this.ipc?.send('close');
+  }
+
+  ToggleMaximizeApp() {
+    this.ipc?.send('toggle-window-maximize');
+  }
+
+  MinimizeApp() {
+    this.ipc?.send('minimize');
   }
 
 }

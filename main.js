@@ -1,6 +1,5 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, ipcMain } = require('electron')
-const path = require('path')
 
 let mainWindow;
 
@@ -11,7 +10,6 @@ const createWindow = () => {
     height: 600,
     frame: false,
     webPreferences: {
-      // preload: path.join(__dirname, 'preload.js')
       nodeIntegration: true,
       contextIsolation: false
     }
@@ -48,19 +46,31 @@ app.on('window-all-closed', () => {
 // In this file you can include the rest of your app's specific main process
 // code. Tu también puedes ponerlos en archivos separados y requerirlos aquí.
 
+//Move the main window to the position pass
 ipcMain.on('move-window', (event, x, y) => {
   mainWindow.setPosition(x, y);
 });
 
+//Pass bounds data to angular
 ipcMain.handle('getBounds', () => {
-  // console.log(arg); // Este es el valor enviado desde Angular
   return mainWindow.getBounds(); // Retorna el valor de vuelta para que pueda ser usado en el proceso de renderizado de Angular
 });
 
-ipcMain.on('toggle-window-maximize', (event, x, y) => {
+//toggle maximize on main window
+ipcMain.on('toggle-window-maximize', () => {
   if ( mainWindow.isMaximized() ) {
     mainWindow.unmaximize();
   } else {
-    mainWindow.maximize()
+    mainWindow.maximize();
   }
 });
+
+//close the app
+ipcMain.on('close', () => {
+  app.quit();
+})
+
+//Minimize the main window
+ipcMain.on('minimize', () => {
+  mainWindow.minimize();
+})

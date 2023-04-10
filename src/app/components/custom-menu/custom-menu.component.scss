@@ -1,5 +1,5 @@
 .toolbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -9,23 +9,24 @@
   background-color: #1976d2;
   color: white;
   font-weight: 600;
+  z-index: 99;
 }
 
-.toolbar img {
-  margin: 0 16px;
+.toolbar span {
+  margin-left: 15px;
 }
 
-.toolbar #twitter-logo {
-  height: 40px;
-  margin: 0 8px;
+.toolbar .buttons-container {
+  margin-left: auto; 
+  padding-right: 10px;
 }
 
-.toolbar #youtube-logo {
-  height: 40px;
-  margin: 0 16px;
-}
-
-.toolbar #twitter-logo:hover,
-.toolbar #youtube-logo:hover {
-  opacity: 0.8;
+.toolbar .buttons-container button {
+  margin-left: 12px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: bolder;
+  font-size: 15px;
 }
